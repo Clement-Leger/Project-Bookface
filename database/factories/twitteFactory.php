@@ -21,7 +21,7 @@ class twitteFactory extends Factory
     public function definition()
     {
         return [
-            'twitte'=> $this->fake()->text()
+            'twitte'=> $this->faker->text()
         ];
     }
 }
