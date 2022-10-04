@@ -19,11 +19,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/add_user', [UserController::class, 'index']);
-Route::post('/store_user', [UserController::class, 'store']);
+Route::get('login', [UserController::class, 'index'])->name('login');
+Route::post('post-login', [UserController::class, 'postLogin'])->name('login.post');
 
-Route::get('login', [UserController::class, 'login_redirection']);
-Route::post('/login_user', [UserController::class, 'login']);
+Route::get('/registration', [UserController::class, 'registration'])->name('register');
+Route::post('/post-registration', [UserController::class, 'postRegistration'])->name('register.post');
+
+Route::get('dashboard', [UserController::class, 'dashboard']); 
+Route::get('logout', [UserController::class, 'logout'])->name('logout');
+
 
 //TEST GET & POST USERS
 Route::get('/users', [UserController::class, 'get_users']);
