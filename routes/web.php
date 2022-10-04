@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PublicationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SearchBarController;
@@ -33,6 +34,11 @@ Route::get('logout', [UserController::class, 'logout'])->name('logout');
 //ROUTE TEST SEARCH BAR
 Route::get('test', [SearchBarController::class, 'index'])->name('zone-de-test');
 Route::get('search', [SearchBarController::class, 'search']);
+
+//ROUTE TEST PUBLICATION
+// Route::resource('publication', PublicationController::class);
+Route::get('publication', [PublicationController::class, 'create'])->name('publication');
+Route::post('post-publication', [PublicationController::class, 'store'])->name('publication.post');
 
 //TEST API GET & POST USERS
 Route::get('/users', [UserController::class, 'get_users']);

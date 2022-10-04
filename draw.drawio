@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="NFcaB-YZbPWduk5y-5V7" name="Page-1">
-        <mxGraphModel dx="746" dy="356" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="567" dy="249" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -8,7 +8,7 @@
                     <mxGeometry x="40" y="40" width="120" height="130" as="geometry"/>
                 </mxCell>
                 <mxCell id="3" value="publications&lt;br&gt;&lt;br&gt;-id&lt;br&gt;-user_id&lt;br&gt;-text(string)&lt;br&gt;-image_url(string)&lt;br&gt;-video_url(string)&lt;br&gt;-like[Object{-type | -int }]" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="230" y="40" width="180" height="130" as="geometry"/>
+                    <mxGeometry x="230" y="40" width="180" height="140" as="geometry"/>
                 </mxCell>
                 <mxCell id="4" value="publication_like_count&lt;br&gt;&lt;br&gt;-id (int primary)&lt;br&gt;-user_id (int)&lt;br&gt;-publication_id (int)&lt;br&gt;-like_id(int)&lt;br&gt;-count (int)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="40" y="235" width="160" height="135" as="geometry"/>
