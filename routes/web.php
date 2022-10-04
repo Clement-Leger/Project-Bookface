@@ -21,3 +21,10 @@ Route::get('/', function () {
 
 Route::get('/add_user', [UserController::class, 'index']);
 Route::post('/store_user', [UserController::class, 'store']);
+
+Route::get('login', [UserController::class, 'login_redirection']);
+Route::post('/login_user', [UserController::class, 'login']);
+
+//TEST GET & POST USERS
+Route::get('/users', [UserController::class, 'get_users']);
+Route::post('/response_user', [UserController::class, 'post_users']);

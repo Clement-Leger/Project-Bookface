@@ -22,5 +22,17 @@
         <input type="text" name="confirm_password">
         <button type="submit">Submit</button>
     </form>
+
+    <H2>LOGIN</H2>
+
+    <form action="{{url('/login_user')}}" method="POST">
+        @csrf
+        <label for="name">Please, login yourself</label>
+        <input type="text" name="name">
+        <br><br>
+        <label for="password">Please, login password</label>
+        <input type="text" name="password">
+        <button type="submit">Login</button>
+    </form>
 </body>
 </html>
