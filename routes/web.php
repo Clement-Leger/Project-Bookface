@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\SearchBarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// SECTION LOGIN / REGISTRATION
+
 Route::get('login', [UserController::class, 'index'])->name('login');
 Route::post('post-login', [UserController::class, 'postLogin'])->name('login.post');
 
@@ -28,7 +30,10 @@ Route::post('/post-registration', [UserController::class, 'postRegistration'])->
 Route::get('dashboard', [UserController::class, 'dashboard']); 
 Route::get('logout', [UserController::class, 'logout'])->name('logout');
 
+//ROUTE TEST SEARCH BAR
+Route::get('test', [SearchBarController::class, 'index'])->name('zone-de-test');
+Route::get('search', [SearchBarController::class, 'search']);
 
-//TEST GET & POST USERS
+//TEST API GET & POST USERS
 Route::get('/users', [UserController::class, 'get_users']);
 Route::post('/response_user', [UserController::class, 'post_users']);
