@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
+    // CLEMENT
     public function index()
     {
         return view ('auth.login');

@@ -7,7 +7,7 @@ use App\Models\User;
 
 class SearchBarController extends Controller
 {
-    //
+    // CLEMENT
     public function __construct()
     {
         $this->middleware('auth');
@@ -25,5 +25,5 @@ class SearchBarController extends Controller
         $users = User::where('name','LIKE', '%'.$search.'%')->get();
 
         return view('search', compact('users'));
-    }
+    } // créer la base de données pour stocker les recherches en fonction de l'utilisateur !!!
 }
