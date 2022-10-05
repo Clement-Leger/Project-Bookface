@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Publication;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PublicationController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +31,8 @@ class PublicationController extends Controller
     public function create()
     {
         //
-        return view('publications.create');
+        $user = Auth::user();
+        return view('publications.create', compact('user'));
     }
 
     /**
@@ -36,10 +43,10 @@ class PublicationController extends Controller
      */
     public function store(Request $request)
     {
-            // Validate the inputs
-            $request->validate([
-                'user_id' => 'required',
-            ]);
+            // Validate the inputs // Not necessary for now
+            // $request->validate([
+            //     'user_id' => 'required',
+            // ]);
     
             // ensure the request has a file before we attempt anything else.
             if ($request->hasFile('file')) {
@@ -53,8 +60,10 @@ class PublicationController extends Controller
     
                 // Store the record, using the new file hashname which will be it's new filename identity.
                 $publication = new Publication([
-                    "name" => $request->get('name'),
-                    "image_url" => $request->file->hashName()
+                    "user_id" => $request->get('user_id'),
+                    "text" => $request->get('text'),
+                    "image_url" => $request->file->hashName(),
+                    "video_url" => $request->file->hashName(),
                 ]);
                 $publication->save(); // Finally, save the record.
             }
