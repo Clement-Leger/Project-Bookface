@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Publication;
 use Illuminate\Http\Request;
-use App\Models\Product;
 
-class ProductController extends Controller
+class PublicationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,7 +25,7 @@ class ProductController extends Controller
     public function create()
     {
         //
-        return view('products.create');
+        return view('publications.create');
     }
 
     /**
@@ -36,32 +36,30 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        
-        // Validate the inputs
-        $request->validate([
-            'name' => 'required',
-        ]);
-
-        // ensure the request has a file before we attempt anything else.
-        if ($request->hasFile('file')) {
-
+            // Validate the inputs
             $request->validate([
-                'image' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
+                'user_id' => 'required',
             ]);
-
-            // Save the file locally in the storage/public/ folder under a new folder named /product
-            $request->file->store('product', 'public');
-
-            // Store the record, using the new file hashname which will be it's new filename identity.
-            $product = new Product([
-                "name" => $request->get('name'),
-                "file_path" => $request->file->hashName()
-            ]);
-            $product->save(); // Finally, save the record.
-        }
-
-        return view('products.create');
-
+    
+            // ensure the request has a file before we attempt anything else.
+            if ($request->hasFile('file')) {
+    
+                $request->validate([
+                    'image' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
+                ]);
+    
+                // Save the file locally in the storage/public/ folder under a new folder named /product
+                $request->file->store('publication', 'public');
+    
+                // Store the record, using the new file hashname which will be it's new filename identity.
+                $publication = new Publication([
+                    "name" => $request->get('name'),
+                    "image_url" => $request->file->hashName()
+                ]);
+                $publication->save(); // Finally, save the record.
+            }
+    
+            return view('publications.create');
     }
 
     /**

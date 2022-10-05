@@ -33,12 +33,12 @@
 
 <div>
 
-<form action="{{ route('products.store') }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('publications.store') }}" method="post" enctype="multipart/form-data">
         <!-- Add CSRF Token -->
         @csrf
     <div class="form-group">
         <label>Product Name</label>
-        <input type="text" class="form-control" name="name" required>
+        <input type="number" class="form-control" name="user_id" required>
     </div>
     <div class="form-group">
         <input type="file" name="file" required>

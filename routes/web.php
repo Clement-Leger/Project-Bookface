@@ -18,7 +18,7 @@ use App\Http\Controllers\SearchBarController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 // SECTION LOGIN / REGISTRATION
@@ -38,7 +38,8 @@ Route::get('search', [SearchBarController::class, 'search']);
 
 //ROUTE TEST PUBLICATION
 Route::resource('products', ProductController::class);
-Route::get('salut', [ProductController::class, 'index']);
+
+Route::resource('publications', PublicationController::class);
 
 //TEST API GET & POST USERS
 Route::get('/users', [UserController::class, 'get_users']);

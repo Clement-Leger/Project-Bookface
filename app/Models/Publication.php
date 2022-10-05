@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Publication extends Model
 {
     use HasFactory;
 
-    protected $fillable=["name", "file_path", "created_at", "updated_at"];
+    protected $fillable = ["user_id", "text", "image_url", "video_url", "created_at", "updated_at"];
 }
