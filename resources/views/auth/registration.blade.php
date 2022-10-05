@@ -41,6 +41,15 @@
                               </div>
                           </div>
                           <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
+                            <div class="col-md-6">
+                                <input type="password" id="password_confirmation" class="form-control" name="password_confirmation" required>
+                                @if ($errors->has('password_confirmation'))
+                                    <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                          <div class="form-group row">
                               <div class="col-md-6 offset-md-4">
                                   <div class="checkbox">
                                       <label>

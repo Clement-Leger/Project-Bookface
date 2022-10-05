@@ -46,7 +46,7 @@ class UserController extends Controller
             'name' => 'required',
             // 'birthdate' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
+            'password' => 'required|confirmed|min:6',
         ]);
 
         $data = $request->all();
