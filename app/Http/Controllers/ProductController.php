@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Publications;
+use App\Models\Product;
 
-class PublicationController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,7 +25,7 @@ class PublicationController extends Controller
     public function create()
     {
         //
-        return view('publications.create');
+        return view('products.create');
     }
 
     /**
@@ -36,27 +36,32 @@ class PublicationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        // Validate the inputs
         $request->validate([
             'name' => 'required',
         ]);
 
-        if($request->hasFile('file'))
-        {
+        // ensure the request has a file before we attempt anything else.
+        if ($request->hasFile('file')) {
+
             $request->validate([
-                'image' => 'mimes:jpeg,bmp,png',
+                'image' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
             ]);
 
-            $request->file->store('publications', 'public');
+            // Save the file locally in the storage/public/ folder under a new folder named /product
+            $request->file->store('product', 'public');
 
-            $publication = new Publications([
-                // 'user_id'=>$request->get('user_id'),
-                'image_url'=>$request->file->hashName(),
+            // Store the record, using the new file hashname which will be it's new filename identity.
+            $product = new Product([
+                "name" => $request->get('name'),
+                "file_path" => $request->file->hashName()
             ]);
-            $publication->save();
+            $product->save(); // Finally, save the record.
         }
 
-        return view('publications.create');
+        return view('products.create');
+
     }
 
     /**
