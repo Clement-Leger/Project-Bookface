@@ -36,11 +36,11 @@
                 </tr>
             @endforeach
 
-            @foreach ($comments as $comment)
+            @foreach ($comments as $item)
             <tr>
-                <td>{{$comment->id}}</td>
-                <td>{{$comment->text}}</td>
-                <td><img src="{{ asset('storage/publication/'.$comment->image_url) }}" /></td>
+                <td>{{$item->id}}</td>
+                <td>{{$item->text}}</td>
+                <td><img src="{{ asset($item->image_url) }}" width= '75' height= '75' /></td>
             </tr>
             @endforeach
         </tbody>

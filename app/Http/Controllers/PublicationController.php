@@ -68,7 +68,7 @@ class PublicationController extends Controller
                 ]);
                 $publication->save(); // Finally, save the record.
             }
-            else if($request->hasFile('file')) 
+           /* else if($request->hasFile('file')) 
             {
                 $request->validate([
                     'video' => 'mimes:mp4,gif' // Only allow .mp4, .gif file types.
@@ -84,12 +84,12 @@ class PublicationController extends Controller
                     "video_url" => $request->file->hashName(),
                 ]);
                 $publication->save(); // Finally, save the record.
-            }
+            } */
             else
             {
                 $publication = new Publication([
                     "user_id" => $request->get('user_id'),
-                    "text" => $request->get('text', 'max 200'),
+                    "text" => $request->get('text'),
                 ]);
                 $publication->save(); // Finally, save the record.
             }
