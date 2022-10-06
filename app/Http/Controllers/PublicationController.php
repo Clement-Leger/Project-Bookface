@@ -52,7 +52,8 @@ class PublicationController extends Controller
             if ($request->hasFile('file')) {
     
                 $request->validate([
-                    'image' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
+                    'image' => 'mimes:jpeg,bmp,png', // Only allow .jpg, .bmp and .png file types.
+                    // 'video' => 'mimetypes:video/mp4'
                 ]);
     
                 // Save the file locally in the storage/public/ folder under a new folder named /product

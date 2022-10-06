@@ -43,7 +43,7 @@
     <tr>
         <td>{{$comment->id}}</td>
         <td>{{$comment->text}}</td>
-        <td><img src="{{$comment->image_url}}" /></td>
+        <td><img src="{{ asset('storage/publication/'.$comment->image_url) }}" /></td>
     </tr>
     @endforeach
     @endsection

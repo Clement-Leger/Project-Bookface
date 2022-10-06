@@ -43,10 +43,10 @@
     <div class="form-group">
         <input type="hidden" class="form-control" name="user_id" value="{{$user->id}}" required>
         <label>Text to send</label>
-        <input type="text" class="form-control" name="text" required>
+        <input type="text" class="form-control" name="text">
     </div>
     <div class="form-group">
-        <input type="file" name="file" required>
+        <input type="file" name="file">
     </div>
     <button type="submit">Submit</button>
 </form>
