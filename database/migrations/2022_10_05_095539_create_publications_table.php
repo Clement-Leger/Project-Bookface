@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('user_id')->nullable();
             $table->string('text')->nullable();
             $table->string('image_url')->nullable();
-            $table->string('video_url')->nullable();            
+            //$table->string('video_url')->nullable();            
             $table->timestamps();
         });
     }
