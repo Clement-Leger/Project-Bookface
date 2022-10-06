@@ -47,7 +47,7 @@ class PublicationController extends Controller
             // $request->validate([
             //     'user_id' => 'required',
             // ]);
-    
+            $user = Auth::user();
             // ensure the request has a file before we attempt anything else.
             if ($request->hasFile('file')) {
     
@@ -63,12 +63,12 @@ class PublicationController extends Controller
                     "user_id" => $request->get('user_id'),
                     "text" => $request->get('text'),
                     "image_url" => $request->file->hashName(),
-                    "video_url" => $request->file->hashName(),
+                    // "video_url" => $request->file->hashName(),
                 ]);
                 $publication->save(); // Finally, save the record.
             }
     
-            return view('publications.create');
+            return view('publications.create', compact('user'));
     }
 
     /**

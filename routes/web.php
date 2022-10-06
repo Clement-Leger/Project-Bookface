@@ -37,7 +37,6 @@ Route::get('test', [SearchBarController::class, 'index'])->name('zone-de-test');
 Route::get('search', [SearchBarController::class, 'search']);
 
 //ROUTE TEST PUBLICATION
-Route::resource('products', ProductController::class);
 
 Route::resource('publications', PublicationController::class);
 

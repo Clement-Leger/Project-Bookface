@@ -38,6 +38,14 @@
             @endforeach
         </tbody>
     </table>
+
+    @foreach ($comments as $comment)
+    <tr>
+        <td>{{$comment->id}}</td>
+        <td>{{$comment->text}}</td>
+        <td><img src="{{$comment->image_url}}" /></td>
+    </tr>
+    @endforeach
     @endsection
     
 </body>
