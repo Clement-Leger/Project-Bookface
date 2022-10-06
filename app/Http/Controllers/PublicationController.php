@@ -89,7 +89,7 @@ class PublicationController extends Controller
             {
                 $publication = new Publication([
                     "user_id" => $request->get('user_id'),
-                    "text" => $request->get('text'),
+                    "text" => $request->get('text', 'max 200'),
                 ]);
                 $publication->save(); // Finally, save the record.
             }
