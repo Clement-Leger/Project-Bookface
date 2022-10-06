@@ -35,6 +35,14 @@
                     <td>{{$user->password}}</td>
                 </tr>
             @endforeach
+
+            @foreach ($comments as $comment)
+            <tr>
+                <td>{{$comment->id}}</td>
+                <td>{{$comment->text}}</td>
+                <td><img src="{{ asset('storage/publication/'.$comment->image_url) }}" /></td>
+            </tr>
+            @endforeach
         </tbody>
     </table>
     @endsection

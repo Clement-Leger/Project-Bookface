@@ -49,6 +49,8 @@ class PublicationController extends Controller
             // ]);
     
             // ensure the request has a file before we attempt anything else.
+            $user = Auth::user();
+
             if ($request->hasFile('file')) {
     
                 $request->validate([
@@ -63,12 +65,36 @@ class PublicationController extends Controller
                     "user_id" => $request->get('user_id'),
                     "text" => $request->get('text'),
                     "image_url" => $request->file->hashName(),
+                ]);
+                $publication->save(); // Finally, save the record.
+            }
+            else if($request->hasFile('file')) 
+            {
+                $request->validate([
+                    'video' => 'mimes:mp4,gif' // Only allow .mp4, .gif file types.
+                ]);
+    
+                // Save the file locally in the storage/public/ folder under a new folder named /product
+                $request->file->store('publication', 'public');
+    
+                // Store the record, using the new file hashname which will be it's new filename identity.
+                $publication = new Publication([
+                    "user_id" => $request->get('user_id'),
+                    "text" => $request->get('text'),
                     "video_url" => $request->file->hashName(),
                 ]);
                 $publication->save(); // Finally, save the record.
             }
+            else
+            {
+                $publication = new Publication([
+                    "user_id" => $request->get('user_id'),
+                    "text" => $request->get('text'),
+                ]);
+                $publication->save(); // Finally, save the record.
+            }
     
-            return view('publications.create');
+            return view('publications.create', compact('user'));
     }
 
     /**

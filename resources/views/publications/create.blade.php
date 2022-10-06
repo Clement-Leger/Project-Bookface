@@ -46,7 +46,7 @@
         <input type="text" class="form-control" name="text" required>
     </div>
     <div class="form-group">
-        <input type="file" name="file" required>
+        <input type="file" name="file" accept="image/*, video/*">
     </div>
     <button type="submit">Submit</button>
 </form>

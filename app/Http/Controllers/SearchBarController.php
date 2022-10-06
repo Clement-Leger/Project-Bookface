@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Publication;
 
 class SearchBarController extends Controller
 {
@@ -16,14 +17,16 @@ class SearchBarController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('test', compact('users'));
+        $comments = Publication::all();
+        return view('test', compact('comments', 'users'));
     }
 
     public function search()
     {
         $search = $_GET['query'];
         $users = User::where('name','LIKE', '%'.$search.'%')->get();
+        $comments = Publication::where('text','LIKE', '%'.$search.'%')->get();
 
-        return view('search', compact('users'));
+        return view('search', compact('users', 'comments'));
     } // créer la base de données pour stocker les recherches en fonction de l'utilisateur !!!
 }

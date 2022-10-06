@@ -13,6 +13,7 @@
                         </div>
                     @endif
                     You are Logged In
+                    <a href="{{ url('/publications/create') }}">twitte</a>
                 </div>
             </div>
         </div>
